@@ -1,0 +1,28 @@
+{
+  "fields": {
+    "id": "identifier",
+    "c": "country",
+    "l": "language",
+    "t": "type",
+    "n": "name",
+    "y": "year",
+    "r": "location",
+    "p": "price",
+    "ib": "has bottle picture",
+    "it": "has stick picture"
+  },
+  "advanced-search": "Advanced Search",
+  "lookups": {
+    "l": {
+      "en": "English",
+      "fr": "French"
+    },
+    "t": {
+      "rouge": "red",
+      "blanc": "white",
+      "rose": "rosé",
+      "mousseux": "mousseux",
+      "champagne": "champagne"
+    }
+  }
+}

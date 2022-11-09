@@ -1,0 +1,15 @@
+{
+  "configuration_notice": [
+    "description : You can update this file to add more language, fix miss-configuration, etc.",
+    "i18n : list of files by language key for translation",
+    "lookups : Lookups in configuration file is merged to lookups key present in translation file",
+    "data.dt : File data.dt contains static file with data in this file first field is 'l' == 'language' which used for record (so all lookups expected are translated in that language)."
+  ],
+  "i18n": {
+    "languages": {
+      "en": "${url_prefix}/assets/i18n_en.json",
+      "fr": "${url_prefix}/assets/i18n_fr.json"
+    }
+  },
+  "lookups": {}
+}

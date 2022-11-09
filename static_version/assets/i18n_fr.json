@@ -1,0 +1,28 @@
+{
+  "fields": {
+    "id": "identifiant",
+    "c": "pays",
+    "l": "langue",
+    "t": "type",
+    "n": "nom",
+    "y": "année",
+    "r": "région",
+    "p": "prix",
+    "ib": "possède une image de bouteille",
+    "it": "possède une image d'étiquette"
+  },
+  "advanced-search": "Recherche Avancée",
+  "lookups": {
+    "l": {
+      "en": "Anglais",
+      "fr": "Francais"
+    },
+    "t": {
+      "rouge": "rouge",
+      "blanc": "blanc",
+      "rose": "rosé",
+      "mousseux": "mousseux",
+      "champagne": "champagne"
+    }
+  }
+}
