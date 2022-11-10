@@ -1,5 +1,6 @@
 import { rollupPluginHTML } from '@web/rollup-plugin-html';
 import {copy} from '@web/rollup-plugin-copy';
+import staticCopy from 'rollup-plugin-copy';
 import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 
@@ -27,6 +28,13 @@ export default {
             ecma: 2021,
             module: true,
             warnings: true,
+        }),
+        // Copy files :
+        staticCopy({
+            targets: [
+                { src: ['./node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff', './node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2'], dest: './build/assets/fonts' },
+                { src: ['./favicon.ico'], dest: './build/' }
+            ]
         }),
         // Optional: copy any static assets to build directory
         copy({
