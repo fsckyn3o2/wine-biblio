@@ -12,8 +12,8 @@ export class WineDashboard extends LitElement {
     constructor() {
         super();
         this.isLoading = true;
-        WineBiblio.srv.get('Queue').handle(DefaultEvents.ID.LOADING_APP, true, undefined).subscribe(msg => {
-            this.isLoading = false;
+        WineBiblio.srv.get('Queue').handle(DefaultEvents.ID.LOADING_APP, undefined, undefined).subscribe(msg => {
+            this.isLoading = !msg.content.finished;
         });
     }
 

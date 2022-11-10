@@ -23,6 +23,7 @@ export class WineList extends LitElement {
         });
         this.list = WineBiblio.srv.get('Data').data.getValue();
         this.sort = 'name-desc';
+        this.translate = WineBiblio.srv.get('Translate').getTranslate();
     }
 
     sortBy(field) {
@@ -64,23 +65,23 @@ export class WineList extends LitElement {
                     <div class="winelist-sort 
                                 ${this.sort === 'name-desc' ? 'winelist-sort-desc winelist-sort-active' :
                                 this.sort === 'name-asc' ? 'winelist-sort-asc winelist-sort-active':''}"
-                         @click=${(e) => this.sortBy('name')}><span>by</span> Name</div>
+                         @click=${(e) => this.sortBy('name')}><span>${this.translate('by')}</span> ${this.translate('fields.n')}</div>
                     <div class="winelist-sort
                                 ${this.sort === 'type-desc' ? 'winelist-sort-desc winelist-sort-active' :
                                 this.sort === 'type-asc' ? 'winelist-sort-asc winelist-sort-active':''}"
-                         @click=${(e) => this.sortBy('type')}><span>by</span> Type</div>
+                         @click=${(e) => this.sortBy('type')}><span>${this.translate('by')}</span> ${this.translate('fields.t')}</div>
                     <div class="winelist-sort
                                 ${this.sort === 'country-desc' ? 'winelist-sort-desc winelist-sort-active' :
                                 this.sort === 'country-asc' ? 'winelist-sort-asc winelist-sort-active':''}"
-                         @click=${(e) => this.sortBy('country')}><span>by</span> Country</div>
+                         @click=${(e) => this.sortBy('country')}><span>${this.translate('by')}</span> ${this.translate('fields.c')}</div>
                     <div class="winelist-sort
                                 ${this.sort === 'region-desc' ? 'winelist-sort-desc winelist-sort-active' :
                                 this.sort === 'region-asc' ? 'winelist-sort-asc winelist-sort-active':''}"
-                         @click=${(e) => this.sortBy('region')}><span>by</span> Region</div>
+                         @click=${(e) => this.sortBy('region')}><span>${this.translate('by')}</span> ${this.translate('fields.r')}</div>
                     <div class="winelist-sort
                                 ${this.sort === 'price-desc' ? 'winelist-sort-desc winelist-sort-active' :
                                 this.sort === 'price-asc' ? 'winelist-sort-asc winelist-sort-active':''}"
-                         @click=${(e) => this.sortBy('price')}><span>by</span> Price</div>
+                         @click=${(e) => this.sortBy('price')}><span>${this.translate('by')}</span> ${this.translate('fields.p')}</div>
                 </div>
                 <div class="wine-list">
                     ${this.list.map((wineObj) => html`<wine-item .wineObj="${wineObj}"></wine-item>`)}

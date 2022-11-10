@@ -24,7 +24,7 @@ export class WineItem extends LitElement {
             <div class="wine-item">
                 <div class="wine-item-header">
                     <div class="wine-item-title">
-                        <span class="${this.wineDetails.icon(this.wineObj)}">&nbsp;</span> ${this.wineObj.n} - ${this.wineObj.y}
+                        <span class="${this.wineDetails.icon(this.wineObj)}">&nbsp;</span> ${this.wineObj.n} ${this.wineObj.y?'-':''} ${this.wineObj.y}
                     </div>
                     <div class="wine-item-actions">
                         

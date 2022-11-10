@@ -6,12 +6,14 @@
     "t": "type",
     "n": "name",
     "y": "year",
-    "r": "location",
+    "r": "locality",
     "p": "price",
     "ib": "has bottle picture",
     "it": "has stick picture"
   },
   "advanced-search": "Advanced Search",
+  "search": "search",
+  "by": "by",
   "lookups": {
     "l": {
       "en": "English",

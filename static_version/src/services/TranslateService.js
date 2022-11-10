@@ -1,5 +1,7 @@
 import {catchError, map} from "rxjs";
 import {ajax} from "rxjs/ajax";
+import DefaultEvents from "../DefaultEvents.js";
+import {WineBiblio} from "../WineBiblio.js";
 
 export default class TranslateService {
 
@@ -14,7 +16,10 @@ export default class TranslateService {
 
     setLanguage(lg) {
         this.language = lg;
-        WineBiblio.srv.get('Cookie').setCookie('language', lg);
+        globalThis.WineBiblio.srv.get('Cookie').setCookie('language', lg);
+        globalThis.WineBiblio.srv.get('Queue').pushMessage(DefaultEvents.ID.LOADING_APP, {...DefaultEvents.CONTENT, finished: false, processing: true});
+        setTimeout(() => globalThis.WineBiblio.srv.get('Queue').pushMessage(DefaultEvents.ID.LOADING_APP, {...DefaultEvents.CONTENT, finished: true, processing: false}),
+            500);
     }
 
     getLanguage() {
@@ -23,8 +28,7 @@ export default class TranslateService {
 
     parseFile(language, fileUrl) {
         console.info(`TranslateService : parseFile - ${language} - ${fileUrl}`);
-
-        this.language = WineBiblio.srv.get('Cookie').getCookie('language', 'en');
+        this.language = globalThis.WineBiblio.srv.get('Cookie').getCookie('language', 'en');
 
         return ajax.getJSON(fileUrl).pipe(
             map(res => {

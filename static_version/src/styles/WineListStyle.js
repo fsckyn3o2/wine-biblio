@@ -20,6 +20,7 @@ export const WineListStyle = () => {
             cursor: pointer;
             font-size: 1em;
             margin: 0 2rem;
+            text-transform: capitalize;
           }
 
           .winelist-sort > span {

@@ -9,17 +9,21 @@ export const WineItemStyle = () => {
             display: flex;
             flex: 1;
             flex-direction: column;
-            border: 1px solid black;
-            border-radius: 5px;
+            border: 1px solid #888;
             padding: .5rem;
-            margin: .5rem;
+            margin: .8rem;
+          }
+          
+          .wine-item:hover {
+            background-color: #FAFAFA;
+            box-shadow: #AAA 4px 6px 6px;
           }
           
           .wine-item-header {
             display: flex;
             flex: 1;
             flex-direction: row;
-            border-bottom: solid black 1px;
+            border-bottom: solid #888 1px;
             margin-bottom: .5rem;
             padding-bottom: .5rem;
           }

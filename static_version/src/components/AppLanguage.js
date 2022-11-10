@@ -13,7 +13,6 @@ export class AppLanguage extends LitElement {
         return AppLanguageStyle();
     }
 
-
     constructor() {
         super();
         this.currentLanguage = WineBiblio.srv.get('Translate').language;
@@ -25,14 +24,14 @@ export class AppLanguage extends LitElement {
 
     render() {
         return html`
-            <div class="btn-group" role="group" aria-label="Language selection">
+            <div class="app-switch-language" role="group" aria-label="Language selection">
                 <input type="radio" class="btn-check" name="language_switch" id="language_switch_en" autocomplete="off" .checked=${this.currentLanguage==='en'?'true':''} 
                        @click=${(e) => this.setLanguage('en') }>
-                <label class="btn btn-outline-primary" for="language_switch_en">English</label>
+                <label class="btn btn-dark" for="language_switch_en">English</label>
 
                 <input type="radio" class="btn-check" name="language_switch" id="language_switch_fr" autocomplete="off" .checked=${this.currentLanguage==='fr'?'true':''} 
                        @click=${(e) => this.setLanguage('fr') }>
-                <label class="btn btn-outline-primary" for="language_switch_fr">French</label>
+                <label class="btn btn-dark" for="language_switch_fr">French</label>
             </div>
         `;
     }

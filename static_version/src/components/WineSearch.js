@@ -27,13 +27,18 @@ export class WineSearch extends LitElement {
     render() {
         return html`
             ${this.isLoading?'':html`
-                <div class="navbar-nav">
-                    <div class="nav-item text-nowrap">
-                        <a class="nav-link px-3" href="#">
-                            <i class="bi-search" class="align-text-bottom" style="font-size: 1.5em; line-height: 1.3em; vertical-align: middle;"></i>
-                            &nbsp;${this.translate('advanced-search')}&nbsp;
-                        </a>
-                    </div>
+                <div class="winesearch-large-input">
+                    <input type="text" placeholder="${this.translate('search')}" aria-label="Recherche" />
+                </div>
+                <div class="winesearch-bar-item">
+                    <a class="nav-link px-3 winesearch-button" href="#">
+                        <i class="bi-search" class="align-text-bottom" style="font-size: 1.5em; line-height: 1.3em; vertical-align: middle;"></i>
+                    </a>
+                </div>
+                <div class="winesearch-bar-item">
+                    <div class="winesearch-button nav-link">${this.translate('advanced-search')}</div>
+                </div>
+                <div class="winesearch-bar-item">
                     <app-language></app-language>
                 </div>
             `}

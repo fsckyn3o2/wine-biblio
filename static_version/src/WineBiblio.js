@@ -10,10 +10,10 @@ import CookieService from "./services/CookieService.js";
 
 export class WineBiblio {
 
+    srv = new ServiceManager();
+
     constructor() {
         console.info('Wine-Biblio Version : 0.0.0a');
-        this.srv = new ServiceManager();
-
         const cookieService = new CookieService();
         this.srv.add(cookieService);
 
