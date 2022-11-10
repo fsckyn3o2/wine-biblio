@@ -29,12 +29,10 @@ jobs:
         uses: actions/setup-node@v3.5.1
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Goto Directory
-        run: cd ./static_version
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Build with NPM
-        run: npm install && npm run build && mv ./build ./_site
+        run: cd ./static_version && npm install && npm run build && mkdir ../_site && mv ./build ../_site 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
