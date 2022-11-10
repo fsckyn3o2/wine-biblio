@@ -1,5 +1,5 @@
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+name: Deploy static GitHub Pages after npm build
 
 on:
   # Runs on pushes targeting the default branch
@@ -29,6 +29,8 @@ jobs:
         uses: actions/setup-node@v3.5.1
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Goto Directory
+        run: cd ./static_version
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Build with NPM
