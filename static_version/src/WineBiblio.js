@@ -41,9 +41,9 @@ export class WineBiblio {
 
         this.srv.get('Queue').pushMessage(DefaultEvents.ID.LOADING_APP, {...DefaultEvents.CONTENT, processing: true});
         const subscription = merge(
-           this.srv.get('Data').loadData('http://localhost:8000/assets/data.dt'),
-           this.srv.get('Translate').parseFile('en', 'http://localhost:8000/assets/i18n_en.json'),
-           this.srv.get('Translate').parseFile('fr', 'http://localhost:8000/assets/i18n_fr.json')
+           this.srv.get('Data').loadData('assets/data.dt'),
+           this.srv.get('Translate').parseFile('en', 'assets/i18n_en.json'),
+           this.srv.get('Translate').parseFile('fr', 'assets/i18n_fr.json')
         ).pipe(takeLast(1)).subscribe(t =>
             this.srv.get('Queue').pushMessage(DefaultEvents.ID.LOADING_APP, {...DefaultEvents.CONTENT, finished: true})
         );
