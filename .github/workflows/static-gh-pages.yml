@@ -32,7 +32,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Build with NPM
-        run: cd ./static_version && npm install && npm run build && mkdir ../_site && mv ./build ../_site 
+        run: cd ./static_version && npm install && npm run build && mkdir -p ../_site && mv ./build ../_site 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
