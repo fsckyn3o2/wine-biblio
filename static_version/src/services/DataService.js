@@ -3,6 +3,7 @@ import {ajax} from 'rxjs/ajax';
 
 export default class DataService {
 
+    _dataOrig = new BehaviorSubject([]);
     data = new BehaviorSubject([]);
     dataById = new BehaviorSubject([]);
     dataByType = new BehaviorSubject([]);
@@ -67,6 +68,7 @@ export default class DataService {
             map(res => {
                 console.info(`data service - data loaded content size(${res.loaded} bytes)`)
                 this.data.next(this.parseDataFile(res.response));
+                this._dataOrig.next(this.data.getValue());
                 this.applyData();
                 console.info(`data service - data loaded current row count(${this.data.getValue().length})`);
             }),

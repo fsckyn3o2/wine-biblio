@@ -30,6 +30,7 @@ export const WineSearchStyle = () => {
           .winesearch-large-input input {
             display: block;
             color: white;
+            text-transform: capitalize;
             background-color: rgba(255, 255, 255, .1);
             border: none;
             outline: 0;

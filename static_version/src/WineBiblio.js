@@ -33,6 +33,8 @@ export class WineBiblio {
 
         const wineDetailsService = new WineDetailsService();
         this.srv.add(wineDetailsService);
+
+        searchService.handleSearch(this.srv);
     }
 
     init() {
