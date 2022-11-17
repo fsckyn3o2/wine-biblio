@@ -9,7 +9,6 @@ export const WineSearchStyle = () => {
             display: flex;
             flex: 1;
             flex-direction: row;
-            width: 100%;
             margin-right: .8rem;
           }
 
@@ -18,11 +17,19 @@ export const WineSearchStyle = () => {
             flex-direction: row;
             color: white;
           }
+          
+          .winesearch-bar-item-large {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+          }
 
           .winesearch-large-input {
             display: flex;
             flex-direction: row;
-            flex: 1;
+            flex: 1 1 100%;
             padding: 0;
             margin: 0;
           }
@@ -63,6 +70,21 @@ export const WineSearchStyle = () => {
             margin: 0 .5rem;
             cursor: pointer;
             color: rgba(255, 255, 255, .5);
+          }
+
+          @media (max-width: 800px) {
+              .winesearch-button {
+                padding: 0 .2em !important;
+                margin: 0 !important;
+              }
+              .winesearch-button-advanced {
+                font-family: monospace;
+                width: 6em;
+                overflow: hidden;
+                display: inline-block;
+                height: 1.8em;
+                margin-top: .7em !important;
+              }
           }
         `];
 };

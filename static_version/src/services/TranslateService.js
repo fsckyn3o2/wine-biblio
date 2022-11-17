@@ -1,7 +1,6 @@
 import {catchError, map} from "rxjs";
 import {ajax} from "rxjs/ajax";
 import DefaultEvents from "../DefaultEvents.js";
-import {WineBiblio} from "../WineBiblio.js";
 
 export default class TranslateService {
 
@@ -54,5 +53,13 @@ export default class TranslateService {
 
     getTranslate() {
         return this.translate.bind(this);
+    }
+
+    lookUp(path) {
+        return Object.entries(this.translate('lookup.' + path));
+    }
+
+    getLookup(){
+        return this.lookUp.bind(this);
     }
 }

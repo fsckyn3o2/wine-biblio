@@ -25,6 +25,14 @@ export const AppLanguageStyle = () => {
             text-decoration: underline;
             border: none;
           }
-          
+
+          @media (max-width: 800px) {
+            .app-switch-language label {
+              width: 2em;
+              overflow: hidden;
+              text-transform: uppercase;
+              font-family: monospace !important;
+            }
+          }
       `];
 };

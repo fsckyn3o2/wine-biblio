@@ -12,9 +12,10 @@
     "it": "possède une image d'étiquette"
   },
   "advanced-search": "Recherche Avancée",
+  "advanced-search-smaller": "Avancée",
   "search": "rechercher",
   "by": "par",
-  "lookups": {
+  "lookup": {
     "l": {
       "en": "Anglais",
       "fr": "Francais"

@@ -7,6 +7,7 @@ import {merge, takeLast} from "rxjs";
 import DefaultEvents from "./DefaultEvents.js";
 import WineDetailsService from "./services/WineDetailsService.js";
 import CookieService from "./services/CookieService.js";
+import ResizeObserverService from "./services/ResizeObserverService.js";
 
 export class WineBiblio {
 
@@ -34,6 +35,9 @@ export class WineBiblio {
         const wineDetailsService = new WineDetailsService();
         this.srv.add(wineDetailsService);
 
+        const screenResizeObserver = new ResizeObserverService();
+        this.srv.add(screenResizeObserver);
+
         searchService.handleSearch(this.srv);
     }
 
@@ -41,7 +45,12 @@ export class WineBiblio {
 
         console.info('Wine-Biblio : load data');
 
+        // Detect mini width on body 800px and push messages.
+        this.srv.get('ScreenResizeObserver').init([800],undefined,undefined,undefined);
+
+        // Push event loading application.
         this.srv.get('Queue').pushMessage(DefaultEvents.ID.LOADING_APP, {...DefaultEvents.CONTENT, processing: true});
+
         const subscription = merge(
            this.srv.get('Data').loadData('assets/data.dt'),
            this.srv.get('Translate').parseFile('en', 'assets/i18n_en.json'),

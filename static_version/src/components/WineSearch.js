@@ -12,7 +12,8 @@ export class WineSearch extends LitElement {
         return {
             isLoading: {type: Boolean},
             searchObj: {type: Object},
-            searchInput: {type: String}
+            searchInput: {type: String},
+            smallerWidth: {type: Boolean}
         }
     };
 
@@ -22,6 +23,12 @@ export class WineSearch extends LitElement {
         WineBiblio.srv.get('Queue').handle(DefaultEvents.ID.LOADING_APP, undefined, undefined).subscribe(msg => {
             this.isLoading = !msg.content.finished;
         });
+
+        this.smallerWidth = false;
+        WineBiblio.srv.get('Queue').handle(DefaultEvents.ID.SCREEN_SIZE_REFRESH, undefined, undefined).subscribe(msg => {
+            this.smallerWidth = msg.content.status[0] === DefaultEvents.SCREEN_SIZE_STATUS.MINI_WIDTH_DETECTED;
+        });
+
         this.translate = WineBiblio.srv.get('Translate').getTranslate();
         this.searchInput = '';
     }
@@ -37,18 +44,27 @@ export class WineSearch extends LitElement {
         }
     }
 
+    openSearchAdvanced() {
+        WineBiblio.srv.get('Queue').pushMessage(DefaultEvents.ID.LOADING_SEARCH_ADV, { toggle: true });
+    }
+
     render() {
         return html`
             ${this.isLoading?'':html`
-                <div class="winesearch-large-input">
-                    <input type="text" placeholder="${this.translate('search')}" 
-                           aria-label="Recherche" 
-                           @keydown=${(e) => this.search(e)}
-                           value=${this.searchInput}
-                    />
+                <div class="winesearch-bar-item-large">
+                    <div class="winesearch-large-input">
+                        <input type="text" 
+                               placeholder="${this.translate('search')}"
+                               @keydown=${(e) => this.search(e)}
+                               aria-label="Recherche" 
+                               value=${this.searchInput}
+                        >
+                    </div>
+                    <wine-search-adv></wine-search-adv>
                 </div>
+                
                 <div class="winesearch-bar-item">
-                    <a class="nav-link px-3 winesearch-button" href="#">
+                    <a class="winesearch-button nav-link" href="#">
                         <i class="bi-search" class="align-text-bottom" 
                            style="font-size: 1.5em; line-height: 1.3em; vertical-align: middle;"
                            @click=${(e) => this.search()}
@@ -56,8 +72,11 @@ export class WineSearch extends LitElement {
                     </a>
                 </div>
                 <div class="winesearch-bar-item">
-                    <div class="winesearch-button nav-link">${this.translate('advanced-search')}</div>
+                    <div class="winesearch-button winesearch-button-advanced nav-link" @click=${(e) => this.openSearchAdvanced()}>
+                        ${this.translate('advanced-search' + (this.smallerWidth ? '-smaller' : ''))}
+                    </div>
                 </div>
+                
                 <div class="winesearch-bar-item">
                     <app-language></app-language>
                 </div>

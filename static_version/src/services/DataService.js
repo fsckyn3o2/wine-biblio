@@ -75,4 +75,14 @@ export default class DataService {
           catchError(err => console.error(err))
         )
     }
+
+    getCountries() {
+        return this.data.getValue()
+            .map(item => item.c)
+            .reduce((acc, curr) => {
+                if(!acc.includes(curr)) acc.push(curr);
+                return acc;
+            }, [])
+            .sort();
+    }
 }

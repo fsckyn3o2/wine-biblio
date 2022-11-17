@@ -35,6 +35,8 @@
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
             }
+            .navbar {
+            }
         }
 
         .b-example-divider {
@@ -73,6 +75,11 @@
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
         }
+
+        .navbar-toggler {
+            padding: 0px;
+            margin: 0 .5em;
+        }
     </style>
 
     <link href="/assets/themes/default/dashboard.css" rel="stylesheet">
@@ -81,16 +88,16 @@
 
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#" style="padding: 0;">Wine Biblio</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <wine-search></wine-search>
+    <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <wine-search></wine-search>
 </header>
 
 <div class="container-fluid">
     <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-            <div class="position-sticky pt-3 sidebar-sticky">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 pt-5 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">
@@ -142,8 +149,6 @@
         </main>
     </div>
 </div>
-
-
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -12,9 +12,10 @@
     "it": "has stick picture"
   },
   "advanced-search": "Advanced Search",
+  "advanced-search-smaller": "Advanced",
   "search": "search",
   "by": "by",
-  "lookups": {
+  "lookup": {
     "l": {
       "en": "English",
       "fr": "French"

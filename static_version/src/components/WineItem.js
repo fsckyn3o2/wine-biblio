@@ -37,7 +37,7 @@ export class WineItem extends LitElement {
                     </div>
                     <div class="wine-item-property">
                         <div class="wine-item-property-label">${this.translate('fields.t')}</div>
-                        <div class="wine-item-property-value">${this.translate('lookups.t.' + this.wineObj.t)}</div>
+                        <div class="wine-item-property-value">${this.translate('lookup.t.' + this.wineObj.t)}</div>
                     </div>
                     <div class="wine-item-property">
                         <div class="wine-item-property-label">${this.translate('fields.r')}</div>
