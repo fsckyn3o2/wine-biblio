@@ -77,7 +77,7 @@ export default class DataService {
     }
 
     getCountries() {
-        return this.data.getValue()
+        return this._dataOrig.getValue()
             .map(item => item.c)
             .reduce((acc, curr) => {
                 if(!acc.includes(curr)) acc.push(curr);

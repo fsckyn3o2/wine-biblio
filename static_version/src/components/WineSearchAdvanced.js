@@ -11,19 +11,19 @@ export class WineSearchAdvanced extends LitElement {
 
     static get properties() {
         return {
-            isLoading: {type: Boolean},
-            searchObj: {type: Object},
-            searchInput: {type: String},
-            isDisplayed: {type: Boolean}
+            isDisplayed: {type: Boolean},
+            criteria: {type: Object}
         }
     };
 
     constructor() {
         super();
+        this.criteria = {};
         this.lookup = WineBiblio.srv.get('Translate').getLookup();
         this.translate = WineBiblio.srv.get('Translate').getTranslate();
         this.countries = WineBiblio.srv.get('Data').getCountries.bind(WineBiblio.srv.get('Data'));
         this.isDisplayed = false;
+
         WineBiblio.srv.get('Queue').handle(DefaultEvents.ID.LOADING_SEARCH_ADV, undefined, undefined)
             .subscribe(msg => {
                 if(msg.content.toggle === true) {
@@ -31,6 +31,29 @@ export class WineSearchAdvanced extends LitElement {
                 }
             });
 
+        WineBiblio.srv.get('Queue').handle(DefaultEvents.ID.LOADING_SEARCH, undefined, undefined)
+            .subscribe(msg => {
+                if(msg.content.shortcut === true){
+                    if(this.isDisplayed === true) {
+                        this.isDisplayed = false;
+                        this.criteria = {...this.criteria, ...msg.content};
+                        delete (this.criteria.shortcut);
+                        setTimeout(() => this.isDisplayed = true, 150);
+                    } else {
+                        this.criteria = {...this.criteria, ...msg.content};
+                        delete (this.criteria.shortcut);
+                    }
+                }
+            });
+    }
+
+    updateSearchCriteria(parameters) {
+        this.criteria = {...this.criteria, ...parameters};
+        WineBiblio.srv.get('Queue').pushMessage(DefaultEvents.ID.LOADING_SEARCH, parameters);
+    }
+
+    closeAdvSearch() {
+        this.isDisplayed = false;
     }
 
     render() {
@@ -39,20 +62,26 @@ export class WineSearchAdvanced extends LitElement {
             <div class="wine-search-adv">
                 <div class="wine-search-adv-item">
                     <label for="search-adv-type">${this.translate('fields.t')}</label>
-                    <select id="search-adv-type">
-                        ${this.lookup('t').map(([key, type]) => html`<option value="${key}">${type}</option>`)}
+                    <select id="search-adv-type" @change=${(e) => this.updateSearchCriteria({type: e.target.value}) } value=${this.criteria.type}>
+                        <option value="">${this.translate('lookup.allNone.all')}</option>
+                        ${this.lookup('t').map(([key, type]) =>  this.criteria.type === key ? html`<option value="${key}" selected="true">${type}</option>` : html`<option value="${key}">${type}</option>`) }
                     </select>
                 </div>
                 <div class="wine-search-adv-item">
                     <label for="search-adv-year">${this.translate('fields.y')}</label>
                     <input type="number" min="0" name="search-adv-year" 
-                           @keydown=${ (e) => Utils.limitInputTextToNumber(e) ? true : e.preventDefault() } />
+                           @keydown=${ (e) => Utils.limitInputTextToNumber(e) ? true : e.preventDefault() }
+                           @keyup=${ (e) => this.updateSearchCriteria({year: e.target.value}) } />
                 </div>
                 <div class="wine-search-adv-item">
                     <label for="search-adv-year">${this.translate('fields.c')}</label>
-                    <select id="search-adv-country">
-                        ${this.countries().map(country => html`<option value="${country}">${country}</option>`)}
-                    </select
+                    <select id="search-adv-country" @change=${(e) => this.updateSearchCriteria({country: e.target.value}) }>
+                        <option value="">${this.translate('lookup.allNone.all')}</option>
+                        ${this.countries().map(country => this.criteria.country === country ? html`<option value="${country}" selected="true">${country}</option>`: html`<option value="${country}">${country}</option>`)}
+                    </select>
+                </div>
+                <div class="wine-search-adv-close" @click=${(e) => this.closeAdvSearch()}>
+                    <i class="bi-x"></i>
                 </div>
             </div>`:
             html``

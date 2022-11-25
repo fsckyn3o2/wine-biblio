@@ -40,7 +40,7 @@ export class WineSearch extends LitElement {
     search(e) {
         if(e && e.keyCode === 13 || undefined === e) {
             this.searchInput = this._input.value;
-            WineBiblio.srv.get('Queue').pushMessage(DefaultEvents.ID.LOADING_SEARCH, {text: this.searchInput});
+            WineBiblio.srv.get('Queue').pushMessage(DefaultEvents.ID.LOADING_SEARCH, {name: this.searchInput});
         }
     }
 
@@ -62,7 +62,6 @@ export class WineSearch extends LitElement {
                     </div>
                     <wine-search-adv></wine-search-adv>
                 </div>
-                
                 <div class="winesearch-bar-item">
                     <a class="winesearch-button nav-link" href="#">
                         <i class="bi-search" class="align-text-bottom" 

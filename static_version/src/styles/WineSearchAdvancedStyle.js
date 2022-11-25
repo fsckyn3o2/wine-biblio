@@ -16,8 +16,25 @@ export const WineSearchAdvancedStyle = () => {
             display: flex;
             flex: 1;
             flex-direction: row;
+            flex-flow: wrap;
             border: 1px solid black;
             background-color: white;
+            padding-top: 1.2em;
+            margin-right: 2em;
+            box-shadow: #AAA 4px 6px 6px;
+          }
+          
+          .wine-search-adv-close {
+            position: absolute;
+            margin-top: -1.3em;
+            margin-right: .2em;
+            font-size: 1.2em;
+            right: 0;
+            cursor: pointer;
+          }
+          
+          .wine-search-adv-close:hover {
+            text-decoration: underline;
           }
 
           .wine-search-adv-item {

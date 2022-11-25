@@ -16,6 +16,10 @@
   "search": "search",
   "by": "by",
   "lookup": {
+    "allNone": {
+      "all": "all",
+      "none": ""
+    },
     "l": {
       "en": "English",
       "fr": "French"

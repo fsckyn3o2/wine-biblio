@@ -16,3 +16,4 @@ import {WineList} from './src/components/WineList.js';
 import {WineSearch} from './src/components/WineSearch.js';
 import {WineSearchAdvanced} from './src/components/WineSearchAdvanced.js';
 import {WineDashboard} from './src/components/WineDashboard.js';
+import {WineSearchCategory} from "./src/components/WineSearchCategory.js";
