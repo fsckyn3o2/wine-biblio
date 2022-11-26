@@ -8,6 +8,9 @@ export const WineListStyle = () => {
           .winelist {
             display: flex;
             flex-direction: column;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
           }
           
           .winelist-sort-criteria {
