@@ -29,7 +29,7 @@ export class WineSearch extends LitElement {
             this.smallerWidth = msg.content.status[0] === DefaultEvents.SCREEN_SIZE_STATUS.MINI_WIDTH_DETECTED;
         });
 
-        this.translate = WineBiblio.srv.get('Translate').getTranslate();
+        this._translate = WineBiblio.srv.get('Translate').getTranslate();
         this.searchInput = '';
     }
 
@@ -54,7 +54,7 @@ export class WineSearch extends LitElement {
                 <div class="winesearch-bar-item-large">
                     <div class="winesearch-large-input">
                         <input type="text" 
-                               placeholder="${this.translate('search')}"
+                               placeholder="${this._translate('search')}"
                                @keydown=${(e) => this.search(e)}
                                aria-label="Recherche" 
                                value=${this.searchInput}
@@ -72,7 +72,7 @@ export class WineSearch extends LitElement {
                 </div>
                 <div class="winesearch-bar-item">
                     <div class="winesearch-button winesearch-button-advanced nav-link" @click=${(e) => this.openSearchAdvanced()}>
-                        ${this.translate('advanced-search' + (this.smallerWidth ? '-smaller' : ''))}
+                        ${this._translate('advanced-search' + (this.smallerWidth ? '-smaller' : ''))}
                     </div>
                 </div>
                 

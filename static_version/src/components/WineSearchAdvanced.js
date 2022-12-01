@@ -20,7 +20,7 @@ export class WineSearchAdvanced extends LitElement {
         super();
         this.criteria = {};
         this.lookup = WineBiblio.srv.get('Translate').getLookup();
-        this.translate = WineBiblio.srv.get('Translate').getTranslate();
+        this._translate = WineBiblio.srv.get('Translate').getTranslate();
         this.countries = WineBiblio.srv.get('Data').getCountries.bind(WineBiblio.srv.get('Data'));
         this.isDisplayed = false;
 
@@ -61,22 +61,22 @@ export class WineSearchAdvanced extends LitElement {
             ${this.isDisplayed===true? html`
             <div class="wine-search-adv">
                 <div class="wine-search-adv-item">
-                    <label for="search-adv-type">${this.translate('fields.t')}</label>
+                    <label for="search-adv-type">${this._translate('fields.t')}</label>
                     <select id="search-adv-type" @change=${(e) => this.updateSearchCriteria({type: e.target.value}) } value=${this.criteria.type}>
-                        <option value="">${this.translate('lookup.allNone.all')}</option>
+                        <option value="">${this._translate('lookup.allNone.all')}</option>
                         ${this.lookup('t').map(([key, type]) =>  this.criteria.type === key ? html`<option value="${key}" selected="true">${type}</option>` : html`<option value="${key}">${type}</option>`) }
                     </select>
                 </div>
                 <div class="wine-search-adv-item">
-                    <label for="search-adv-year">${this.translate('fields.y')}</label>
+                    <label for="search-adv-year">${this._translate('fields.y')}</label>
                     <input type="number" min="0" name="search-adv-year" 
                            @keydown=${ (e) => Utils.limitInputTextToNumber(e) ? true : e.preventDefault() }
                            @keyup=${ (e) => this.updateSearchCriteria({year: e.target.value}) } />
                 </div>
                 <div class="wine-search-adv-item">
-                    <label for="search-adv-year">${this.translate('fields.c')}</label>
+                    <label for="search-adv-year">${this._translate('fields.c')}</label>
                     <select id="search-adv-country" @change=${(e) => this.updateSearchCriteria({country: e.target.value}) }>
-                        <option value="">${this.translate('lookup.allNone.all')}</option>
+                        <option value="">${this._translate('lookup.allNone.all')}</option>
                         ${this.countries().map(country => this.criteria.country === country ? html`<option value="${country}" selected="true">${country}</option>`: html`<option value="${country}">${country}</option>`)}
                     </select>
                 </div>

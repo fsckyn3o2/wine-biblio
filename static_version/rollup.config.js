@@ -25,8 +25,8 @@ export default {
         resolve(),
         // Minify JS
         terser({
-            ecma: 2021,
-            module: true,
+            ecma: 5,
+            module: false,
             warnings: true,
         }),
         // Copy files :

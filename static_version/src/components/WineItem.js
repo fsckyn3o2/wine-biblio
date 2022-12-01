@@ -15,7 +15,7 @@ export class WineItem extends LitElement {
 
     constructor() {
         super();
-        this.translate = WineBiblio.srv.get('Translate').getTranslate();
+        this._translate = WineBiblio.srv.get('Translate').getTranslate();
         this.wineDetails = WineBiblio.srv.get('WineDetails');
     }
 
@@ -32,23 +32,23 @@ export class WineItem extends LitElement {
                 </div>
                 <div class="wine-item-details">
                     <div class="wine-item-property">
-                        <div class="wine-item-property-label">${this.translate('fields.c')}</div>
+                        <div class="wine-item-property-label">${this._translate('fields.c')}</div>
                         <div class="wine-item-property-value">${this.wineObj.c}</div>
                     </div>
                     <div class="wine-item-property">
-                        <div class="wine-item-property-label">${this.translate('fields.t')}</div>
-                        <div class="wine-item-property-value">${this.translate('lookup.t.' + this.wineObj.t)}</div>
+                        <div class="wine-item-property-label">${this._translate('fields.t')}</div>
+                        <div class="wine-item-property-value">${this._translate('lookup.t.' + this.wineObj.t)}</div>
                     </div>
                     <div class="wine-item-property">
-                        <div class="wine-item-property-label">${this.translate('fields.r')}</div>
+                        <div class="wine-item-property-label">${this._translate('fields.r')}</div>
                         <div class="wine-item-property-value">${this.wineObj.r}</div>
                     </div>
                     <div class="wine-item-property">
-                        <div class="wine-item-property-label">${this.translate('fields.y')}</div>
+                        <div class="wine-item-property-label">${this._translate('fields.y')}</div>
                         <div class="wine-item-property-value">${this.wineObj.y}</div>
                     </div>
                     <div class="wine-item-property">
-                        <div class="wine-item-property-label">${this.translate('fields.p')}</div>
+                        <div class="wine-item-property-label">${this._translate('fields.p')}</div>
                         <div class="wine-item-property-value">${this.wineObj.p} ${this.wineObj.m.toUpperCase()}</div>
                     </div>
                 </div>

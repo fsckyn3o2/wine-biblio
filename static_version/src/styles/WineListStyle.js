@@ -16,14 +16,23 @@ export const WineListStyle = () => {
           .winelist-sort-criteria {
             display: flex;
             flex-direction: row;
-            padding: 1.3rem;
+            flex-flow: row;
+            padding: .8rem 0;
+            flex-wrap: wrap;
           }
           
           .winelist-sort {
             cursor: pointer;
             font-size: 1em;
-            margin: 0 2rem;
+            margin: .3rem 2rem;
             text-transform: capitalize;
+            flex-direction: row;
+          }
+
+          @media (max-width: 980px) {
+            .winelist-sort-criteria {
+              flex-direction: column;
+            }
           }
 
           .winelist-sort > span {

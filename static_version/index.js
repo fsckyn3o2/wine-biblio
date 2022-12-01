@@ -2,6 +2,8 @@
 import {Utils} from './src/Utils.js'
 
 // Services
+import DefaultEvents from "./src/DefaultEvents.js";
+import TranslateService from "./src/services/TranslateService.js";
 import DataService from './src/services/DataService.js';
 import SearchService from './src/services/SearchService.js';
 import ResizeObserverService from './src/services/ResizeObserverService.js';
