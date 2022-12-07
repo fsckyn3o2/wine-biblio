@@ -1,7 +1,12 @@
 import {LitElement, html} from 'lit';
 import {WineList} from "./WineList.js";
+import {WineListGridStyle} from "../styles/WineListGridStyle.js";
 
-export class WineListThumbnail extends WineList {
+export class WineListGrid extends WineList {
+
+    static get styles() {
+        return WineListGridStyle();
+    }
 
     render() {
         return html`
@@ -28,11 +33,11 @@ export class WineListThumbnail extends WineList {
                                 this.sort === 'price-asc' ? 'winelist-sort-asc winelist-sort-active':''}"
                          @click=${(e) => this.sortBy('price')}><span>${this._translate('by')} </span> ${this._translate('fields.p')}</div>
                 </div>
-                <div class="wine-list">
+                <div class="wine-grid">
                     ${this.list.map((wineObj) => html`<wine-item .wineObj="${wineObj}"></wine-item>`)}
                 </div>
             </div>
         `;
     }
 }
-customElements.define('wine-list-thumbnail', WineListThumbnail);
+customElements.define('wine-list-grid', WineListGrid);

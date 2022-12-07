@@ -46,7 +46,6 @@ export class WineSearchAdvanced extends LitElement {
                 } else {
                     this.criteria = {...this.criteria, ...msg.content};
                     delete (this.criteria.shortcut);
-                    console.log(this.criteria);
                 }
             });
     }

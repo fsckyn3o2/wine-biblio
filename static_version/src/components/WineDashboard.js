@@ -3,42 +3,46 @@ import DefaultEvents from "../DefaultEvents.js";
 
 export class WineDashboard extends LitElement {
 
-    wineList = undefined;
 
     static get properties() {
         return {
           isLoading: {type:Boolean},
-          defaultViewMode: {type: String}
+          defaultViewMode: {type: String},
+          wineList: {type: String}
         };
     }
 
     constructor() {
         super();
         this.isLoading = true;
+        this.viewMode(this.defaultViewMode || 'list');
         WineBiblio.srv.get('Queue').handle(DefaultEvents.ID.LOADING_APP, undefined, undefined).subscribe(msg => {
             this.isLoading = !msg.content.finished;
         });
 
-        WineBiblio.srv.get('Queue').handle(DefaultEvents.ID.VIEW_MODE, undefined, undefined).subscribe(msg => this.viewMode(msg.content));
+        WineBiblio.srv.get('Queue').handle(DefaultEvents.ID.VIEW_MODE, undefined, undefined).subscribe(msg => {
+            this.viewMode(msg.content.value);
+        });
     }
 
     viewMode(msg){
         switch (msg) {
             default:
             case 'default':
+            case 'list':
                 this.wineList = html`<wine-list sort="name-desc"></wine-list>`;
                 break;
-            case 'thumbnail':
-                this.wineList = html`<wine-list-thumbnail sort="name-desc"></wine-list-thumbnail>`;
+            case 'grid':
+                this.wineList = html`<wine-list-grid sort="name-desc"></wine-list-grid>`;
                 break;
             case 'picture':
                 this.wineList = html`<wine-list sort="name-desc"></wine-list>`;
                 break;
         }
+        this.render();
     }
 
     render() {
-        this.viewMode(this.defaultViewMode);
         return html`
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <div style="display: flex; flex-direction: row; align-items: center">
@@ -51,7 +55,7 @@ export class WineDashboard extends LitElement {
 <!--                    </div>-->
                 </div>
             </div>
-            ${this.isLoading ? html`<app-loading></app-loading>` : this.wineList}
+            ${this.isLoading ? html`<app-loading></app-loading>` : html`${this.wineList}`}
         `;
     }
 }

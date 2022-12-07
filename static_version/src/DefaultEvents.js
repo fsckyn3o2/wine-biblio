@@ -6,7 +6,8 @@ export default {
         LOADING_EXPORT_DATA: 'loading-export-data',
         LOADING_SEARCH: 'loading-search',
         LOADING_SEARCH_ADV: 'loading-search-adv',
-        SCREEN_SIZE_REFRESH: 'screen-size-refresh'
+        SCREEN_SIZE_REFRESH: 'screen-size-refresh',
+        VIEW_MODE: 'view-mode'
     },
     CONTENT: {
         finished: false,

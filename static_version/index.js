@@ -16,7 +16,7 @@ import {AppLanguage} from './src/components/AppLanguage.js';
 import {WineItem} from './src/components/WineItem.js';
 import {WineViewMode} from "./src/components/WineViewMode.js";
 import {WineList} from './src/components/WineList.js';
-import {WineListThumbnail} from './src/components/WineListThumbnail.js';
+import {WineListGrid} from './src/components/WineListGrid.js';
 import {WineSearch} from './src/components/WineSearch.js';
 import {WineSearchAdvanced} from './src/components/WineSearchAdvanced.js';
 import {WineDashboard} from './src/components/WineDashboard.js';
