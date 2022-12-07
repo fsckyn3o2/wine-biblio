@@ -43,6 +43,10 @@ export class WineSearchAdvanced extends LitElement {
                         this.criteria = {...this.criteria, ...msg.content};
                         delete (this.criteria.shortcut);
                     }
+                } else {
+                    this.criteria = {...this.criteria, ...msg.content};
+                    delete (this.criteria.shortcut);
+                    console.log(this.criteria);
                 }
             });
     }
@@ -54,6 +58,16 @@ export class WineSearchAdvanced extends LitElement {
 
     closeAdvSearch() {
         this.isDisplayed = false;
+    }
+
+    resetForm() {
+
+        this.updateSearchCriteria({
+            type: undefined,
+            year: undefined,
+            country: undefined
+        });
+        this.renderRoot.querySelector('input[name=search-adv-year]').value = '';
     }
 
     render() {
@@ -69,7 +83,7 @@ export class WineSearchAdvanced extends LitElement {
                 </div>
                 <div class="wine-search-adv-item">
                     <label for="search-adv-year">${this._translate('fields.y')}</label>
-                    <input type="number" min="0" name="search-adv-year" 
+                    <input type="number" min="0" name="search-adv-year" value=${this.criteria?.year}
                            @keydown=${ (e) => Utils.limitInputTextToNumber(e) ? true : e.preventDefault() }
                            @keyup=${ (e) => this.updateSearchCriteria({year: e.target.value}) } />
                 </div>
@@ -79,6 +93,9 @@ export class WineSearchAdvanced extends LitElement {
                         <option value="">${this._translate('lookup.allNone.all')}</option>
                         ${this.countries().map(country => this.criteria.country === country ? html`<option value="${country}" selected="true">${country}</option>`: html`<option value="${country}">${country}</option>`)}
                     </select>
+                </div>
+                <div class="wine-search-adv-reset" @click=${(e) => this.resetForm()}>
+                    <i class="bi-eraser"></i>
                 </div>
                 <div class="wine-search-adv-close" @click=${(e) => this.closeAdvSearch()}>
                     <i class="bi-x"></i>

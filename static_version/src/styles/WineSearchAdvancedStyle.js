@@ -24,6 +24,7 @@ export const WineSearchAdvancedStyle = () => {
             box-shadow: #AAA 4px 6px 6px;
           }
           
+          .wine-search-adv-reset,
           .wine-search-adv-close {
             position: absolute;
             margin-top: -1.3em;
@@ -33,8 +34,15 @@ export const WineSearchAdvancedStyle = () => {
             cursor: pointer;
           }
           
+          .wine-search-adv-reset:hover,
           .wine-search-adv-close:hover {
             text-decoration: underline;
+          }
+          
+          .wine-search-adv-reset {
+            margin-right: 2em;
+            font-size: .9em;
+            line-height: 1em;
           }
 
           .wine-search-adv-item {
